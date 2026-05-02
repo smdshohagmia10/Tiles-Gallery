@@ -1,11 +1,5 @@
-import React from 'react';
+import AllTilesPage from "@/Components/AllTilesPage";
 
-const page = () => {
-  return (
-    <div>
-      All Tiles
-    </div>
-  );
-};
-
-export default page;
+export default function Page() {
+  return <AllTilesPage />;
+}
