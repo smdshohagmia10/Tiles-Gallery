@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tiles Gallery
 
-## Getting Started
+## Project Description
 
-First, run the development server:
+Tiles Gallery is a web application where different types of tiles are showcased in a clean and organized way. Users can browse tiles, search by title, and view detailed information about each tile. Some routes are protected and require authentication.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+* Responsive design (Mobile, Tablet, Desktop)
+* Search functionality on the All Tiles page
+* Tile details page 
+* User authentication 
+* Update user information 
+* Protected route system
+* Toast notifications for error and success messages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Technologies Used
 
-To learn more about Next.js, take a look at the following resources:
+* Next.js 
+* Tailwind CSS
+* DaisyUI 
+* BetterAuth (MongoDB)
+* React Toastify
+* Animate.css
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Live link 
+* https://next-tiles-gallery.vercel.app
