@@ -1,72 +1,75 @@
 "use client";
-import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
 
-const SearchBox = () => {
-    const router = useRouter();
-    const searchParams = useSearchParams();
-    const [search, setSearch] = useState(searchParams.get("q") || "");
-    const [focused, setFocused] = useState(false);
+export default function SearchBox({ tiles }) {
+  const [query, setQuery] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
-    const handleSearch = (e) => {
-        e.preventDefault();
-        const params = new URLSearchParams(searchParams);
-        if (search.trim()) {
-            params.set("q", search.trim());
-        } else {
-            params.delete("q");
-        }
-        router.push(`/allTiles?${params.toString()}`);
-    };
+  const handleSearch = () => {
+    setSearchTerm(query);
+  };
 
-    return (
-        <form
-            onSubmit={handleSearch}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-2xl border bg-white transition-all duration-200 mx-2 mb-6 ${
-                focused
-                    ? "border-emerald-500 shadow-[0_0_0_3px_rgba(16,185,129,0.12)]"
-                    : "border-gray-200"
-            }`}
-        >
-            <svg
-                className={`w-5 h-5 shrink-0 transition-colors ${focused ? "text-emerald-500" : "text-gray-400"}`}
-                fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  const filtered = tiles.filter((tile) =>
+    tile.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <div className="p-6">
+      <div className="mb-6 flex justify-center gap-2">
+        <input
+          type="text"
+          placeholder="Search tiles..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)} 
+          onKeyDown={handleKeyDown}
+          className="input input-bordered w-full max-w-md"
+        />
+        <button onClick={handleSearch} className="btn btn-primary">
+          Search
+        </button>
+      </div>
+
+      {searchTerm && (
+        <p className="text-sm text-gray-400 mb-4">
+          {filtered.length} tile{filtered.length !== 1 ? "s" : ""} found for "{searchTerm}"
+        </p>
+      )}
+
+      {searchTerm && filtered.length === 0 ? (
+        <p className="text-center text-gray-400 mt-10">No tiles found.</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {(searchTerm ? filtered : tiles).map((tile) => (
+            <div
+              key={tile.id} 
+              className="card bg-base-100 shadow-md border border-base-200"
             >
-                <circle cx="11" cy="11" r="7" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-
-            <input
-                type="text"
-                placeholder="Search tiles..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                onFocus={() => setFocused(true)}
-                onBlur={() => setFocused(false)}
-                className="flex-1 bg-transparent outline-none text-sm text-gray-800 placeholder:text-gray-400"
-            />
-
-            {search && (
-                <button
-                    type="button"
-                    onClick={() => setSearch("")}
-                    className="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-600"
-                >
-                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
-                        <line x1="1" y1="1" x2="11" y2="11" />
-                        <line x1="11" y1="1" x2="1" y2="11" />
-                    </svg>
-                </button>
-            )}
-
-            <button
-                type="submit"
-                className="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium px-4 py-1.5 rounded-xl transition-colors shrink-0"
-            >
-                Search
-            </button>
-        </form>
-    );
-};
-
-export default SearchBox;
+              <figure>
+                <img
+                  src={tile.image}
+                  alt={tile.title}
+                  className="w-full h-48 object-cover"
+                />
+              </figure>
+              <div className="card-body p-4">
+                <h2 className="card-title text-base">{tile.title}</h2>
+                <p className="text-xs text-gray-400">{tile.dimensions}</p>
+                <p className="text-primary font-bold">${tile.price}</p>
+                <div className="card-actions mt-2">
+                  <Link href={`/tile/${tile.id}`}>View Details</Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}

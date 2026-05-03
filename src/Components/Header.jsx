@@ -9,18 +9,20 @@ const Header = () => {
 
         <section className="flex flex-col items-center justify-center text-center px-6 py-6 gap-6">
           <h1
-            className="text-5xl md:text-7xl font-extrabold tracking-tight"
+            className="animate__animated animate__bounceOut text-5xl md:text-7xl font-extrabold tracking-tight"
             style={{
               background: "linear-gradient(to right, #a78bfa, #f472b6, #f6d365)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",}}>
             Discover Your Perfect Aesthetic
           </h1>
-          <p className="text-gray-400 text-lg md:text-xl max-w-xl">
+
+          
+          <p className=" animate__animated animate__backInLeft text-gray-400 text-lg md:text-xl max-w-xl">
             Explore our premium collection of tiles — from classic ceramics to modern geometric designs.
           </p>
         </section>
-             <section className="mt-2  py-6 flex items-center justify-center rounded-full...">
+             <section className="animate__animated animate__backInLeft mt-2  py-6 flex items-center justify-center rounded-full...">
               <Link href={"/all-tiles"}><button className="btn btn-outline btn-primary">Browser Now</button></Link>
              </section>
 
