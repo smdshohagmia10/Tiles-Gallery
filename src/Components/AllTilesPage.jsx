@@ -1,9 +1,16 @@
 import Link from "next/link";
+// import SearchBox from "./SearchBox";
 
 const AllTilesPage = async () => {
   const res = await fetch("https://tiles-gallery-eta.vercel.app/data.json");
   const data = await res.json();
   const tiles = data.tiles;
+
+  
+   
+  
+
+  
 
   return (
    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">

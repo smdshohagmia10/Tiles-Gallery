@@ -2,19 +2,21 @@ import { betterAuth } from "better-auth";
 import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 
-const uri = process.env.MONGODB_URL;
-const client = new MongoClient(uri);
-
-async function getDb() {
-  await client.connect();
-  return client.db("tiles-gallery");
-}
-
-const db = await getDb();
+const client = new MongoClient(process.env.MONGODB_URI);
+const db = client.db("tiles-gallery");
 
 export const auth = betterAuth({
-  database: mongodbAdapter(db),
-  emailAndPassword: {
-    enabled: true,
-  },
+   emailAndPassword: { 
+    enabled: true, 
+  }, 
+   socialProviders: {
+        google: { 
+            clientId: process.env.GOOGLE_ID , 
+            clientSecret: process.env.GOOGLE_PASS, 
+        }, 
+    },
+  database: mongodbAdapter(db, {
+    // Optional: if you don't provide a client, database transactions won't be enabled.
+    client
+  }),
 });
