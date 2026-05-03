@@ -10,12 +10,6 @@ const DetailsPage = async ({ params }) => {
   return (
      <div className="min-h-screen bg-gray-100 px-6 py-8">
 
-      {/* Breadcrumb */}
-      <div className="max-w-5xl mx-auto text-sm text-gray-400 mb-6">
-        Home &gt; All Tiles &gt;{" "}
-        <span className="text-gray-600">{tile.title}</span>
-      </div>
-
       {/* Main Card */}
       <div className="max-w-5xl mx-auto bg-white rounded-xl shadow p-6 flex flex-col md:flex-row gap-8">
 
