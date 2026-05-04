@@ -8,24 +8,26 @@ Tiles Gallery is a web application where different types of tiles are showcased 
 
 ## Features
 
-* Responsive design (Mobile, Tablet, Desktop)
-* Search functionality on the All Tiles page
-* Tile details page 
-* User authentication 
-* Update user information 
-* Protected route system
-* Toast notifications for error and success messages
+- Responsive design (Mobile, Tablet, Desktop)
+- Search functionality on the All Tiles page
+- Tile details page
+- User authentication
+- Update user information
+- Protected route system
+- Toast notifications for error and success messages
+<!-- Hello -->
 
 ---
 
 ## Technologies Used
 
-* Next.js 
-* Tailwind CSS
-* DaisyUI 
-* BetterAuth (MongoDB)
-* React Toastify
-* Animate.css
+- Next.js
+- Tailwind CSS
+- DaisyUI
+- BetterAuth (MongoDB)
+- React Toastify
+- Animate.css
 
-## Live link 
-* https://next-tiles-gallery.vercel.app
+## Live link
+
+- https://next-tiles-gallery.vercel.app
